@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head><link rel="stylesheet" href="/static/styles.css">
+<title>Nester - Dashboard</title></head>
+<body>
+<h1>Liste des sondes Seahawks Harvester</h1>
+<ul>
+  {% for h in harvesters %}
+    <li>
+      <a href="/harvester/{{ h.id }}">
+        {{ h.name }}
+        <span style="color: {{ 'green' if h.status == 'connecte' else 'red' }}">
+          ({{ h.status }})
+        </span>
+      </a>
+    </li>
+  {% endfor %}
+</ul>
+</body>
+</html>

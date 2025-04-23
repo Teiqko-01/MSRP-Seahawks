@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head><link rel="stylesheet" href="/static/styles.css">
+<title>Scan Report - {{ id }}</title></head>
+<body>
+  <h1>Scan réseau de {{ id }}</h1>
+  <ul>
+    {% for host, data in report.items() %}
+      <li>
+        {{ host }} ({{ data.hostname }}) - Ports : {{ data.ports|join(", ") }}
+      </li>
+    {% endfor %}
+  </ul>
+</body>
+</html>

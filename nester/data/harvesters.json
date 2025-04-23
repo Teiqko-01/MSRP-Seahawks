@@ -1,0 +1,22 @@
+[
+  {
+    "id": "seahawks-harvester-02",
+    "name": "SeaHawks-HARVESTER-02",
+    "ip": "192.168.1.110",
+    "hostname": "seahawks-harvester-02",
+    "latency": "10.718 ms",
+    "version": "1.0.0",
+    "status": "connect\u00e9",
+    "scanned_at": "2025-04-13T22:03:27"
+  },
+  {
+    "id": "seahawks-harvester",
+    "name": "SeaHawks-HARVESTER",
+    "ip": "192.168.1.105",
+    "hostname": "seahawks-harvester",
+    "latency": "10.410 ms",
+    "version": "1.0.0",
+    "status": "connect\u00e9",
+    "scanned_at": "2025-04-18T22:29:55"
+  }
+]

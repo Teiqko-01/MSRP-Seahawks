@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Historique des scans</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <h1>Historique des scans de {{ harvester_id }}</h1>
+
+  <form method="POST">
+    <label for="date">Choisir une date :</label>
+    <input type="date" id="date" name="date" value="{{ selected_date }}">
+    <button type="submit">Rechercher</button>
+  </form>
+
+  {% if history %}
+    <ul>
+      {% for scan in history %}
+        <li>
+          {{ scan[0] }}
+          – <a href="/history/scans/{{ harvester_id }}/{{ scan[0] }}">Voir</a>
+          – <a href="/history/scans/{{ harvester_id }}/{{ scan[0] }}/csv">Exporter en CSV</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% elif selected_date %}
+    <p>Aucun scan trouve pour {{ selected_date }}</p>
+  {% endif %}
+
+  <br>
+  <a href="/">Retour</a>
+</body>
+</html>

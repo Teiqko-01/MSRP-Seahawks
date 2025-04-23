@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scan du {{ scanned_at }}</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h1>Scan du {{ scanned_at }}</h1>
+    <h2>Sonde : {{ harvester_id }}</h2>
+
+    {% if scans %}
+        <table border="1" cellpadding="5" cellspacing="0">
+<thead>
+    <tr>
+        <th>Adresse IP</th>
+        <th>Nom hote</th>
+        <th>Ports ouverts</th>
+    </tr>
+</thead>
+<tbody>
+    {% for scan in scans %}
+        <tr>
+            <td>{{ scan[0] }}</td>
+            <td>{{ scan[1] }}</td>
+            <td>{{ scan[2] }}</td>
+        </tr>
+    {% endfor %}
+</tbody>
+        </table>
+        <p>
+            <a href="/history/scans/{{ harvester_id }}/{{ scanned_at }}/csv">
+                Exporter ce scan en CSV
+            </a>
+        </p>
+    {% else %}
+        <p>Aucun resultat pour ce moment de scan.</p>
+    {% endif %}
+
+    <br>
+    <a href="/history/{{ harvester_id }}">Retour</a>
+</body>
+</html>

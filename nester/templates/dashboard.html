@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ harvester.name }} - Tableau de bord</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h1>Tableau de bord - {{ harvester.name }}</h1>
+
+    <div>
+        <p><strong>Nom de l'agent :</strong> {{ harvester.hostname }}</p>
+        <p><strong>Adresse IP :</strong> {{ harvester.ip }}</p>
+        <p><strong>Latence WAN :</strong> {{ harvester.latency }}</p>
+        <p><strong>Version :</strong> {{ harvester.version }}</p>
+        <p><strong>Date du dernier scan :</strong> {{ last_scan or "Aucun scan" }}</p>
+        <p><strong>Nombre d'equipements detectes :</strong> {{ report|length }}</p>
+    </div>
+
+    <hr>
+
+    <h2>Dernier scan reseau</h2>
+
+    {% if report %}
+        <ul>
+            {% for ip, data in report.items() %}
+                <li>
+                    <strong>{{ ip }}</strong> ({{ data.hostname }})<br>
+                    Ports : {{ data.ports | join(', ') }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Aucun rapport de scan disponible.</p>
+    {% endif %}
+
+    <p>
+        <a href="/report/{{ harvester.id }}">Voir le rapport complet (JSON)</a>
+    </p>
+
+    <p>
+        <a href="/history/{{ harvester.hostname }}">Voir l'historique des scans</a>
+    </p>
+
+    <br><br>
+    <a href="/">Retour</a>
+</body>
+</html>
